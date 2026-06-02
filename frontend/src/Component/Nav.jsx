@@ -23,7 +23,7 @@ function Nav() {
     let navigate = useNavigate()
     let {serverUrl} = useContext(authDataContext)
     let [cate,setCate]= useState()
-    let {listingData,setListingData,setNewListData,newListData,searchData,handleSearch,handleViewCard}=useContext(listingDataContext)
+    let {listingData,setListingData,setNewListData,newListData,searchData,handleSearch,handleViewCard,setSearchData}=useContext(listingDataContext)
     let [input,setInput]=useState("")
     const handleLogOut = async () => {
         try {
