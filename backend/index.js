@@ -10,9 +10,17 @@ import listingRouter from "./routes/listing.route.js"
 import bookingRouter from "./routes/booking.route.js"
 let port = process.env.PORT || 6000
 
-connectDb()
-
 let app = express()
+
+// Database connection middleware to ensure connection is established before processing requests in serverless environment
+app.use(async (req, res, next) => {
+    try {
+        await connectDb();
+        next();
+    } catch (err) {
+        return res.status(500).json({ message: "Database connection failed", error: err.message });
+    }
+});
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
