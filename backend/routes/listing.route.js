@@ -17,6 +17,9 @@ listingRouter.get("/findlistingbyid/:id",isAuth,findListing)
 listingRouter.delete("/delete/:id",isAuth,deleteListing)
 listingRouter.post("/ratings/:id",isAuth,ratingListing)
 listingRouter.get("/search",search)
+listingRouter.get("/test-error", (req, res) => {
+    throw new Error("This is a diagnostic error!");
+})
 
 listingRouter.post("/update/:id",isAuth,upload.fields([
     {name:"image1",maxCount:1},
