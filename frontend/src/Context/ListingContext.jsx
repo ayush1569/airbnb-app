@@ -68,7 +68,8 @@ function ListingContext({children}) {
         } catch (error) {
             setAdding(false)
             console.log(error)
-            toast.error(error.response.data.message)
+            const errMsg = error.response?.data?.message || error.message || "An unexpected error occurred.";
+            toast.error(errMsg)
         }
         
      }
