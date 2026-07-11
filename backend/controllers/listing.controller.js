@@ -11,9 +11,9 @@ export const addListing = async (req,res) => {
         
         // Upload images in parallel to prevent Vercel execution timeouts
         const [image1, image2, image3] = await Promise.all([
-            uploadOnCloudinary(req.files.image1[0].path),
-            uploadOnCloudinary(req.files.image2[0].path),
-            uploadOnCloudinary(req.files.image3[0].path)
+            uploadOnCloudinary(req.files.image1[0]),
+            uploadOnCloudinary(req.files.image2[0]),
+            uploadOnCloudinary(req.files.image3[0])
         ]);
 
         let listing = await Listing.create({
@@ -72,11 +72,11 @@ export const updateListing = async (req,res) => {
         let {id} = req.params;
         let {title,description,rent,city,landMark,category} = req.body
         if(req.files.image1){
-        image1 = await uploadOnCloudinary(req.files.image1[0].path)}
+        image1 = await uploadOnCloudinary(req.files.image1[0])}
         if(req.files.image2)
-        {image2 = await uploadOnCloudinary(req.files.image2[0].path)}
+        {image2 = await uploadOnCloudinary(req.files.image2[0])}
         if(req.files.image3){
-        image3 = await uploadOnCloudinary(req.files.image3[0].path)}
+        image3 = await uploadOnCloudinary(req.files.image3[0])}
 
         let listing = await Listing.findByIdAndUpdate(id,{
             title,

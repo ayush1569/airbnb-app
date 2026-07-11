@@ -1,10 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { FaHome } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import { listingDataContext } from '../Context/ListingContext';
 function ListingPage3() {
     let navigate = useNavigate()
+    const [showModal, setShowModal] = useState(false)
     let {title,setTitle,
         description,setDescription,
         frontEndImage1,setFrontEndImage1,
@@ -49,13 +50,45 @@ function ListingPage3() {
          <div className='w-[95%] flex items-start justify-start text-[18px] md:w-[80%] md:text-[25px] text-gray-800'>{`${description.toUpperCase()}`}</div>
          <div className='w-[95%] flex items-start justify-start text-[18px] md:w-[80%] md:text-[25px]'>{`Rs.${rent}/day`}</div>
 
-         <div className='w-[95%] h-[50px] flex items-center justify-start px-[110px]'><button className='px-[30px] py-[10px] bg-[red] text-[white] text-[18px] md:px-[100px] rounded-lg text-nowrap ' onClick={handleAddListing} disabled={adding}> 
-          {adding? "adding...":"Add Listing"}
-         </button>
-         </div>
-         
-      
-    </div>
+         <div className='w-[95%] h-[50px] flex items-center justify-start px-[110px]'>
+            <button 
+              className='px-[30px] py-[10px] bg-[red] text-[white] text-[18px] md:px-[100px] rounded-lg text-nowrap ' 
+              onClick={async () => {
+                const success = await handleAddListing()
+                if (success) {
+                  setShowModal(true)
+                }
+              }} 
+              disabled={adding}
+            > 
+              {adding ? "adding..." : "Add Listing"}
+            </button>
+          </div>
+
+          {showModal && (
+            <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
+              <div className="bg-white rounded-2xl max-w-[450px] w-full p-8 shadow-2xl flex flex-col items-center text-center gap-6 transform scale-100 transition-transform">
+                <div className="w-[80px] h-[80px] bg-green-100 rounded-full flex items-center justify-center">
+                  <svg className="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <h2 className="text-2xl font-bold text-gray-900">Listed Successfully!</h2>
+                  <p className="text-gray-600">Your property has been listed on the platform and is now visible to everyone.</p>
+                </div>
+                <button 
+                  className="w-full py-3 bg-[red] text-white rounded-xl font-semibold text-[18px] shadow-lg hover:bg-red-600 transition-colors"
+                  onClick={() => navigate("/")}
+                >
+                  Go to Homepage
+                </button>
+              </div>
+            </div>
+          )}
+          
+        
+      </div>
   )
 }
 
