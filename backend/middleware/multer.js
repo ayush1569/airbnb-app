@@ -1,11 +1,12 @@
 import multer from "multer"
+import os from "os"
 
 let storage = multer.diskStorage({
     destination:(req,file,cb)=>{
-        cb(null,"./public")
+        cb(null, os.tmpdir())
     },
     filename:(req,file,cb)=>{
-        cb(null,file.originalname)
+        cb(null, Date.now() + "-" + file.originalname)
     }
 })
 const upload = multer({storage})
