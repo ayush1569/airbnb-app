@@ -33,6 +33,15 @@ app.use("/api/user", userRouter )
 app.use("/api/listing",listingRouter )
 app.use("/api/booking",bookingRouter )
 
+app.use((err, req, res, next) => {
+    console.error("GLOBAL ERROR:", err);
+    res.status(500).json({
+        message: "Internal Server Error caught by global handler",
+        error: err.message,
+        stack: err.stack
+    });
+});
+
 if (process.env.NODE_ENV !== "production") {
     app.listen(port,()=>{
         console.log(`server started on port ${port}`)
