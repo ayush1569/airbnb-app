@@ -1,6 +1,5 @@
 import React from 'react'
-import { FaArrowLeftLong } from "react-icons/fa6";
-import { FaHome } from "react-icons/fa";
+import { FaArrowLeftLong, FaHome } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
 import { GiFamilyHouse } from "react-icons/gi";
 import { MdBedroomParent } from "react-icons/md";
