@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaArrowLeftLong, FaHome } from "react-icons/fa6";
+import { FaArrowLeftLong, FaHouse } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
 import { GiFamilyHouse } from "react-icons/gi";
 import { MdBedroomParent } from "react-icons/md";
@@ -22,7 +22,7 @@ function ListingPage2() {
   return (
     <div className='w-[100%] h-[100vh] bg-white flex items-center justify-center relative overflow-auto '>
          <div className='w-[50px] h-[50px] bg-[red] cursor-pointer fixed top-[5%] left-[20px] z-[50] rounded-[50%] flex items-center justify-center' onClick={()=>navigate("/listingpage1")} title="Go Back"><FaArrowLeftLong className='w-[25px] h-[25px] text-[white]' /></div>
-         <div className='w-[50px] h-[50px] bg-[black] cursor-pointer fixed top-[5%] left-[85px] z-[50] rounded-[50%] flex items-center justify-center' onClick={()=>navigate("/")} title="Go Home"><FaHome className='w-[25px] h-[25px] text-[white]' /></div>
+         <div className='w-[50px] h-[50px] bg-[black] cursor-pointer fixed top-[5%] left-[85px] z-[50] rounded-[50%] flex items-center justify-center' onClick={()=>navigate("/")} title="Go Home"><FaHouse className='w-[25px] h-[25px] text-[white]' /></div>
         <div className='w-[200px] h-[50px] text-[20px] bg-[#f14242] text-[white] flex items-center justify-center rounded-[30px] absolute top-[5%] right-[10px] shadow-lg'> Set Your Category </div>
 
         <div className='max-w-[900px] w-[100%] h-[550px] overflow-auto bg-white flex items-center justify-start flex-col gap-[40px] mt-[30px] '>

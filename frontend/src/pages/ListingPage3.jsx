@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { FaArrowLeftLong, FaHome } from "react-icons/fa6";
+import { FaArrowLeftLong, FaHouse } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
 import { listingDataContext } from '../Context/ListingContext';
 function ListingPage3() {
@@ -23,7 +23,7 @@ function ListingPage3() {
   return (
     <div className='w-[100%] h-[100vh] bg-[white] flex items-center justify-center gap-[10px] flex-col overflow-auto  relative'>
          <div className='w-[50px] h-[50px] bg-[red] cursor-pointer fixed top-[5%] left-[20px] z-[50] rounded-[50%] flex items-center justify-center' onClick={()=>navigate("/listingpage2")} title="Go Back"><FaArrowLeftLong className='w-[25px] h-[25px] text-[white]' /></div>
-         <div className='w-[50px] h-[50px] bg-[black] cursor-pointer fixed top-[5%] left-[85px] z-[50] rounded-[50%] flex items-center justify-center' onClick={()=>navigate("/")} title="Go Home"><FaHome className='w-[25px] h-[25px] text-[white]' /></div>
+         <div className='w-[50px] h-[50px] bg-[black] cursor-pointer fixed top-[5%] left-[85px] z-[50] rounded-[50%] flex items-center justify-center' onClick={()=>navigate("/")} title="Go Home"><FaHouse className='w-[25px] h-[25px] text-[white]' /></div>
 
          <div className='w-[95%]  flex items-start justify-start text-[25px] md:w-[80%] mb-[10px]'>
             <h1 className='text-[20px]  text-[#272727] md:text-[30px] text-ellipsis text-nowrap overflow-hidden px-[70px] md:px-[0px]'>
