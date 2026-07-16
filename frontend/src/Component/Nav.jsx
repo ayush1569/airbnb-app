@@ -82,11 +82,17 @@ function Nav() {
                         {userData == null && <span><CgProfile className='w-[23px] h-[23px]' /></span>}
                         {userData != null && <span className='w-[30px] h-[30px] bg-[#080808] text-[white] rounded-full flex items-center justify-center'>{userData?.name.slice(0,1)}</span>}
                     </button>
-                    {showpopup && <div className='w-[220px] h-[250px] absolute bg-slate-50 top-[110%] right-[3%] border-[1px] border-[#aaa9a9] z-10 rounded-lg md:right-[10%]'>
-                        <ul className='w-[100%] h-[100%] text-[17px] flex items-start justify-around flex-col py-[10px]'>
+                    {showpopup && <div className='w-[240px] h-auto absolute bg-slate-50 top-[110%] right-[3%] border-[1px] border-[#aaa9a9] z-10 rounded-lg md:right-[10%] shadow-lg'>
+                        <ul className='w-[100%] text-[17px] flex items-start justify-start flex-col py-[10px] gap-[2px]'>
+                            {userData && (
+                                <div className='w-[100%] px-[15px] py-[8px] flex flex-col items-start border-b-[1px] border-[#e2e8f0] mb-[5px]'>
+                                    <span className='font-bold text-gray-950 text-[14px] truncate w-[100%]'>{userData.name}</span>
+                                    <span className='text-[12px] text-gray-500 truncate w-[100%]'>{userData.email}</span>
+                                </div>
+                            )}
                             {!userData && <li className='w-[100%] px-[15px] py-[10px] hover:bg-[#f4f3f3] cursor-pointer' onClick={()=>{navigate("/login");setShowpopup(false)}}>Login</li>}
                             {userData && <li className='w-[100%] px-[15px] py-[10px] hover:bg-[#f4f3f3] cursor-pointer' onClick={()=>{handleLogOut();setShowpopup(false)}}>Logout</li>}
-                            <div className='w-[100%] h-[1px] bg-[#c1c0c0]'></div>
+                            <div className='w-[100%] h-[1px] bg-[#e2e8f0] my-[5px]'></div>
                             <li className='w-[100%] px-[15px] py-[10px] hover:bg-[#f4f3f3] cursor-pointer' onClick={()=>{navigate("/listingpage1");setShowpopup(false)}}>List your Home</li>
                             <li className='w-[100%] px-[15px] py-[10px] hover:bg-[#f4f3f3] cursor-pointer'onClick={()=>{navigate("/mylisting");setShowpopup(false)}}>My Listing</li>
                             <li className='w-[100%] px-[15px] py-[10px] hover:bg-[#f4f3f3] cursor-pointer'  onClick={()=>{navigate("/mybooking");setShowpopup(false)}}>MY Booking</li>
