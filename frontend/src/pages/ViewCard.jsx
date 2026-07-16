@@ -158,12 +158,29 @@ function ViewCard() {
              <div className='w-[95%] flex items-start justify-start text-[18px] md:w-[80%] md:text-[25px] text-gray-800'>{cardDetails.description}</div>
              <div className='w-[95%] flex items-start justify-start text-[18px] md:w-[80%] md:text-[25px]'>{`Rs.${cardDetails.rent}/day`}</div>
                  
-             <div className='w-[95%] h-[50px] flex items-center justify-start px-[110px]'>{cardDetails.host == userData._id &&<button className='px-[30px] py-[10px] bg-[red] text-[white] text-[18px] md:px-[100px] rounded-lg  text-nowrap' onClick={()=>setUpdatePopUp(prev => !prev)}> 
-              Edit listing
-             </button>}
-             {cardDetails.host != userData._id && <button className='px-[30px] py-[10px] bg-[red] text-[white] text-[18px] md:px-[100px] rounded-lg   text-nowrap' onClick={()=>setBookingPopUp(prev => !prev)}> 
-                Reserve
-             </button>}
+             <div className='w-[95%] h-[50px] flex items-center justify-start px-[110px]'>
+               {cardDetails.host == userData._id && (
+                 <button className='px-[30px] py-[10px] bg-[red] text-[white] text-[18px] md:px-[100px] rounded-lg  text-nowrap' onClick={()=>setUpdatePopUp(prev => !prev)}> 
+                   Edit listing
+                 </button>
+               )}
+               {cardDetails.host != userData._id && (
+                 cardDetails.isBooked ? (
+                   cardDetails.guest === userData._id ? (
+                     <button className='px-[30px] py-[10px] bg-[green] text-[white] text-[18px] md:px-[100px] rounded-lg text-nowrap cursor-not-allowed' disabled> 
+                       Reserved by You
+                     </button>
+                   ) : (
+                     <button className='px-[30px] py-[10px] bg-[gray] text-[white] text-[18px] md:px-[100px] rounded-lg text-nowrap cursor-not-allowed' disabled> 
+                       Already Booked
+                     </button>
+                   )
+                 ) : (
+                   <button className='px-[30px] py-[10px] bg-[red] text-[white] text-[18px] md:px-[100px] rounded-lg text-nowrap' onClick={()=>setBookingPopUp(prev => !prev)}> 
+                     Reserve
+                   </button>
+                 )
+               )}
              </div>
 
              {/* Update Listing Page */}
