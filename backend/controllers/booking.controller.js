@@ -1,6 +1,7 @@
 import Booking from "../model/booking.model.js"
 import Listing from "../model/listing.model.js"
 import User from "../model/user.model.js"
+import { sendBookingEmail } from "../config/mailer.js"
 
 export const createBooking = async (req,res) => {
    try {
@@ -36,6 +37,10 @@ export const createBooking = async (req,res) => {
     listing.guest=req.userId
     listing.isBooked=true
     await listing.save()
+    
+    // Send confirmation email in background
+    sendBookingEmail(user.email, user.name, listing, checkIn, checkOut, totalRent);
+    
     return res.status(201).json(booking)
 
    } catch (error) {
